@@ -56,6 +56,31 @@ def choose_turn_order(p1, p2):
         print(p2, " has been randomly chosen to go first")
         return p2, p1
 
+
+
+#Function to get the next move from the player whose turn it is and adds it to the board
+#Args:
+#   turn_player: A string that contains the name of the player that has the current turn
+def get_next_move(turn_player):
+    #loops through to make sure there is proper input
+    while(True):
+        move = input(turn_player, " enter an index 1-9 that corresponds to an open spot.")
+        #checks if move is a valid input
+        if move not in {'1', '2', '3', '4', '5', '6', '7', '8', '9'}
+            print("That is an invalid input. Try again with a number 1-9.")
+        #if empty, the spot will be filled with the proper player token
+        elif board[int(move)-1] == "":
+            if turn_player == first_turn_player:
+                board[int(move)-1] = first_turn_player_token
+            else:
+                board[int(move)-1] = second_turn_player_token
+            break
+        #board spot is full
+        else:
+            print("That spot has already been filled! Try again.")
+            
+
+
 #Determine if the game has ended, showing the results and allowing user to restart the game if the game has ended
 #Args:
 #   first_turn_player: A String variable of the name of the player going first
