@@ -58,7 +58,7 @@ def choose_turn_order(p1, p2):
 
 
 
-#Function to get the next move from the player whose turn it is and adds it to the board
+#Function to get the next move from the player whose turn it is and add it to the board
 #Args:
 #   turn_player: A string that contains the name of the player that has the current turn
 def get_next_move(turn_player):
