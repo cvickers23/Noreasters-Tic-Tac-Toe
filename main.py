@@ -1,4 +1,5 @@
 #Tic Tac Toe game
+#COM 306 Software Engineering
 #Noreasters: Craig Haber, Chelsea Vickers, Jacob Nozaki, Tessa Carvalho
 #10/30/2020
 #A command line interface tool for playing tic tac toe
@@ -26,6 +27,17 @@ def play_game(p1, p2):
             cur_player = second_turn_player
         else:
             cur_player = first_turn_player
+
+
+#Function to allow players to input their names through the command line
+#Returns:
+#   The two player name strings p1 and p2
+def enter_names():
+    #accept input of two separate player names
+    p1 = input("Enter name of player 1: ")
+    p2 = input("Enter name of player 2: ")
+    return(p1, p2)
+
 
 #Function to determine which player goes first
 #Args:
@@ -103,3 +115,6 @@ def determine_game_over(first_turn_player, second_turn_player):
             print("\nThat was not a valid input, please try again.\n")
 
 determine_game_over("Bob", "Rick")
+
+
+
