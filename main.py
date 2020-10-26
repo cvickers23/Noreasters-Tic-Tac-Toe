@@ -79,6 +79,15 @@ def get_next_move(turn_player):
         else:
             print("That spot has already been filled! Try again.")
             
+#Function to play a single turn in a game of tic tac toe
+#Args:
+#   first_turn_player: A string that contains the name of the player that has the first turn
+#   second_turn_player: A string that contains the name of the player who has the second turn
+#   turn_player: A string that contains the name of the player whose has the current turn
+def play_turn(first_turn_player, second_turn_player, turn_player):
+    get_next_move(turn_player)
+    display_board()
+    determine_game_over(first_turn_player, second_turn_player)
 
 
 #Determine if the game has ended, showing the results and allowing user to restart the game if the game has ended
@@ -139,7 +148,12 @@ def determine_game_over(first_turn_player, second_turn_player):
         else:
             print("\nThat was not a valid input, please try again.\n")
 
-determine_game_over("Bob", "Rick")
+#Function to run the whole program
+def main():
+    print_rules()
+    p1, p2 = enter_names()
+    play_game(p1, p2)
 
+#main()
 
 
