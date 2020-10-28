@@ -18,6 +18,9 @@ board = ["", "", "", "", "", "", "", "", ""]
 #   p1: A String variable of the name of the player who entered their name first
 #   p2: A string variable of the name of the player who entered their name first
 def play_game(p1, p2):
+    #load global variables
+    global first_turn_player
+    global second_turn_player
     first_turn_player, second_turn_player = choose_turn_order(p1, p2)
     choose_token()
     cur_player = first_turn_player
@@ -61,6 +64,11 @@ def choose_turn_order(p1, p2):
 #Args:
 #   turn_player: A string that contains the name of the player that has the current turn
 def get_next_move(turn_player):
+    #load global variables
+    global board
+    global first_turn_player
+    global first_turn_player_token
+    global second_turn_player_token
     #loops through to make sure there is proper input
     while(True):
         move = input(turn_player + " enter an index 1-9 that corresponds to an open spot: ")
@@ -165,6 +173,9 @@ Example Game Board (with Indices):
 #   first_turn_player: A string containing the name of the player going first
 #   second_turn_player: A string containing the name of the player going second
 def choose_token():
+    #load global variables
+    global first_turn_player_token
+    global second_turn_player_token
     while(True):
         token = input(first_turn_player + ", enter your choice of token (X/x or O/o): ")
 
@@ -186,11 +197,11 @@ def choose_token():
 
 #Function to display the current game board
 def display_board():
-    print(" " + board[0] + " | " + board[1] + " | " + board[2]) # Row 1
+    print("  " + board[0] + "  |  " + board[1] + "  |  " + board[2]) # Row 1
     print("-----------")
-    print(" " + board[3] + " | " + board[4] + " | " + board[5]) # Row 2
+    print("  " + board[3] + "  |  " + board[4] + "  |  " + board[5]) # Row 2
     print("-----------")
-    print(" " + board[6] + " | " + board[7] + " | " + board[8]) # Row 3
+    print("  " + board[6] + "  |  " + board[7] + "  |  " + board[8]) # Row 3
 
 
 #Function to run the whole program
