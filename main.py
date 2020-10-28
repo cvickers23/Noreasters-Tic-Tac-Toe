@@ -6,7 +6,9 @@
 import random
 
 #initialize global variables
+first_turn_player = ""
 first_turn_player_token = ""
+second_turn_player = ""
 second_turn_player_token = ""
 game_over = False
 board = ["", "", "", "", "", "", "", "", ""]
@@ -17,9 +19,7 @@ board = ["", "", "", "", "", "", "", "", ""]
 #   p2: A string variable of the name of the player who entered their name first
 def play_game(p1, p2):
     first_turn_player, second_turn_player = choose_turn_order(p1, p2)
-    #define global variables
-    global first_turn_player_token, second_turn_player_token, game_over, board
-    choose_token(first_turn_player, second_turn_player)
+    choose_token()
     cur_player = first_turn_player
     while game_over == False:
         play_turn(cur_player)
@@ -63,7 +63,7 @@ def choose_turn_order(p1, p2):
 def get_next_move(turn_player):
     #loops through to make sure there is proper input
     while(True):
-        move = input(turn_player, " enter an index 1-9 that corresponds to an open spot.")
+        move = input(turn_player + " enter an index 1-9 that corresponds to an open spot: ")
         #if empty, the spot will be filled with the proper player token
         if board[int(move)-1] == "":
             if turn_player == first_turn_player:
@@ -78,20 +78,18 @@ def get_next_move(turn_player):
             
 #Function to play a single turn in a game of tic tac toe
 #Args:
-#   first_turn_player: A string that contains the name of the player that has the first turn
-#   second_turn_player: A string that contains the name of the player who has the second turn
 #   turn_player: A string that contains the name of the player whose has the current turn
-def play_turn(first_turn_player, second_turn_player, turn_player):
+def play_turn(turn_player):
     get_next_move(turn_player)
     display_board()
-    determine_game_over(first_turn_player, second_turn_player)
+    determine_game_over()
 
 
 #Determine if the game has ended, showing the results and allowing user to restart the game if the game has ended
 #Args:
 #   first_turn_player: A String variable of the name of the player going first
 #   second_turn_player: A string variable of the name of the player going second
-def determine_game_over(first_turn_player, second_turn_player):
+def determine_game_over():
     #Intialize boolean variables
     is_winner_found = False
     game_has_ended = False
@@ -132,8 +130,6 @@ def determine_game_over(first_turn_player, second_turn_player):
 
     #End the game
     while game_has_ended:
-        #Change global variable of game_over to true
-        game_over = True
         #Determine if the player would like to play again
         play_again_choice = input("Would you like to play again (yes/no)?: ")
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
@@ -168,7 +164,7 @@ Example Game Board (with Indices):
 #Args:
 #   first_turn_player: A string containing the name of the player going first
 #   second_turn_player: A string containing the name of the player going second
-def choose_token(first_turn_player, second_turn_player):
+def choose_token():
     while(True):
         token = input(first_turn_player + ", enter your choice of token (X/x or O/o): ")
 
@@ -203,6 +199,6 @@ def main():
     p1, p2 = enter_names()
     play_game(p1, p2)
 
-#main()
+main()
 
 
