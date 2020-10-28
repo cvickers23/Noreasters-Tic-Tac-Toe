@@ -57,7 +57,6 @@ def choose_turn_order(p1, p2):
         return p2, p1
 
 
-
 #Function to get the next move from the player whose turn it is and add it to the board
 #Args:
 #   turn_player: A string that contains the name of the player that has the current turn
@@ -75,6 +74,7 @@ def get_next_move(turn_player):
         #board spot is full
         else:
             print("That spot has already been filled! Try again.")
+
             
 #Function to play a single turn in a game of tic tac toe
 #Args:
@@ -144,6 +144,58 @@ def determine_game_over(first_turn_player, second_turn_player):
             game_has_ended = False
         else:
             print("\nThat was not a valid input, please try again.\n")
+
+
+
+#Function to print the rules of Tic Tac Toe
+def print_rules():
+    print("""Rules of the game:
+1. The game is played on a 3x3 square grid.
+2. One player’s token is X and the other player’s token is O.
+3. Players take turns putting their token in empty squares in the grid.
+4. The first player to get 3 of their tokens in a row (up, down, across, or diagonally) is the winner.
+5. When all 9 squares of the grid are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+Example Game Board (with Indices):
+1 | 2 | 3
+-----------
+4 | 5 | 6
+-----------
+7 | 8 | 9 """)
+
+
+#Function to let the first turn player choose their game token, and assigns other token to other player
+#Args:
+#   first_turn_player: A string containing the name of the player going first
+#   second_turn_player: A string containing the name of the player going second
+def choose_token(first_turn_player, second_turn_player):
+    while(True):
+        token = input(first_turn_player + ", enter your choice of token (X/x or O/o): ")
+
+        if (token == "X" or token == "x"): # First turn player entered X/x
+            first_turn_player_token, second_turn_player_token = "X", "O" # First turn player gets X, second gets O
+            break # Tokens assigned, end loop
+
+        elif (token == "O" or token == "o"): # First turn player entered O/o
+            first_turn_player_token, second_turn_player_token = "O", "X" # First turn player gets O, second gets X
+            break # Tokens assigned, end loop
+
+        else: # First turn player entered invalid input
+            print("Please enter either X/x or O/o.")
+
+    # Display assigned tokens
+    print(first_turn_player + " is " + first_turn_player_token + ", " +
+          second_turn_player + " is " + second_turn_player_token + ".")
+
+
+#Function to display the current game board
+def display_board():
+    print(" " + board[0] + " | " + board[1] + " | " + board[2]) # Row 1
+    print("-----------")
+    print(" " + board[3] + " | " + board[4] + " | " + board[5]) # Row 2
+    print("-----------")
+    print(" " + board[6] + " | " + board[7] + " | " + board[8]) # Row 3
+
 
 #Function to run the whole program
 def main():
