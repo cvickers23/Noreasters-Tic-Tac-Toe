@@ -5,13 +5,22 @@
 #A command line interface tool for playing tic tac toe
 import random
 
-#initialize global variables
-first_turn_player = ""
-first_turn_player_token = ""
-second_turn_player = ""
-second_turn_player_token = ""
-game_over = False
-board = ["", "", "", "", "", "", "", "", ""]
+#Function to print the rules of Tic Tac Toe
+def print_rules():
+    print("""Rules of the game:
+1. The game is played on a 3x3 square grid.
+2. One player’s token is X and the other player’s token is O.
+3. Players take turns putting their token in empty squares in the grid.
+4. The first player to get 3 of their tokens in a row (up, down, across, or diagonally) is the winner.
+5. When all 9 squares of the grid are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+Example Game Board (with Indices):
+ 1 | 2 | 3
+-----------
+ 4 | 5 | 6
+-----------
+ 7 | 8 | 9 """)
+
 
 #Function to play a single game of tic tac toe
 #Args:
@@ -74,7 +83,7 @@ def get_next_move(turn_player):
     while(True):
         move = input(turn_player + " enter an index 1-9 that corresponds to an open spot: ")
         #if empty, the spot will be filled with the proper player token
-        if board[int(move)-1] == "":
+        if board[int(move)-1] == " ":
             if turn_player == first_turn_player:
                 board[int(move)-1] = first_turn_player_token
             else:
@@ -120,7 +129,7 @@ def determine_game_over():
     ]
     for triple in win_state_indices:
         is_all_same_token = board[triple[0]] == board[triple[1]] == board[triple[2]]
-        is_token_empty = board[triple[0]] == ""
+        is_token_empty = board[triple[0]] == " "
         if is_all_same_token and (not is_token_empty):
             #Since a player has won, all tokens in the triple are the same, so any token in the triple is the winning token
             winner_token = board[triple[0]]
@@ -135,7 +144,7 @@ def determine_game_over():
     #Check if there's a tie
     if not is_winner_found:
         #Ensure that every space in the board has been filled
-        if all([token != "" for token in board]):
+        if all([token != " " for token in board]):
             print("THE GAME HAS ENDED, IT IS A TIE.")
             game_has_ended = True
 
@@ -144,7 +153,7 @@ def determine_game_over():
         #Determine if the player would like to play again
         play_again_choice = input("Would you like to play again (yes/no)?: ")
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
-            board = ["", "", "", "", "", "", "", "", ""]
+            board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
             play_game(first_turn_player, second_turn_player)
             game_has_ended = False
         elif play_again_choice in ["No", "no", "NO", "nO", "n", "N"]:
@@ -154,23 +163,6 @@ def determine_game_over():
         else:
             print("\nThat was not a valid input, please try again.\n")
 
-
-
-#Function to print the rules of Tic Tac Toe
-def print_rules():
-    print("""Rules of the game:
-1. The game is played on a 3x3 square grid.
-2. One player’s token is X and the other player’s token is O.
-3. Players take turns putting their token in empty squares in the grid.
-4. The first player to get 3 of their tokens in a row (up, down, across, or diagonally) is the winner.
-5. When all 9 squares of the grid are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
-
-Example Game Board (with Indices):
-1 | 2 | 3
------------
-4 | 5 | 6
------------
-7 | 8 | 9 """)
 
 
 #Function to let the first turn player choose their game token, and assigns other token to other player
@@ -203,14 +195,22 @@ def choose_token():
 #Function to display the current game board
 def display_board():
     print("  " + board[0] + "  |  " + board[1] + "  |  " + board[2]) # Row 1
-    print("-----------")
+    print("----------------")
     print("  " + board[3] + "  |  " + board[4] + "  |  " + board[5]) # Row 2
-    print("-----------")
+    print("----------------")
     print("  " + board[6] + "  |  " + board[7] + "  |  " + board[8]) # Row 3
 
 
 #Function to run the whole program
 def main():
+    #initialize global variables
+    global first_turn_player, first_turn_player_token, second_turn_player, second_turn_player_token, game_over, board
+    first_turn_player = ""
+    first_turn_player_token = ""
+    second_turn_player = ""
+    second_turn_player_token = ""
+    game_over = False
+    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     print_rules()
     p1, p2 = enter_names()
     play_game(p1, p2)
