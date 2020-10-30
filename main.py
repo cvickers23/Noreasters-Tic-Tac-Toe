@@ -21,6 +21,7 @@ def play_game(p1, p2):
     #load global variables
     global first_turn_player
     global second_turn_player
+    global game_over
     first_turn_player, second_turn_player = choose_turn_order(p1, p2)
     choose_token()
     cur_player = first_turn_player
@@ -98,6 +99,8 @@ def play_turn(turn_player):
 #   first_turn_player: A String variable of the name of the player going first
 #   second_turn_player: A string variable of the name of the player going second
 def determine_game_over():
+    global board
+    global game_over
     #Intialize boolean variables
     is_winner_found = False
     game_has_ended = False
@@ -141,11 +144,13 @@ def determine_game_over():
         #Determine if the player would like to play again
         play_again_choice = input("Would you like to play again (yes/no)?: ")
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
+            board = ["", "", "", "", "", "", "", "", ""]
             play_game(first_turn_player, second_turn_player)
             game_has_ended = False
         elif play_again_choice in ["No", "no", "NO", "nO", "n", "N"]:
             print("\nThanks for playing!")
-            game_has_ended = False
+            game_over = True
+            break
         else:
             print("\nThat was not a valid input, please try again.\n")
 
