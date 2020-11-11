@@ -218,6 +218,7 @@ def main():
     p1, p2 = enter_names()
     play_game(p1, p2)
 
-main()
+if __name__ == "__main__":
+    main()
 
 
