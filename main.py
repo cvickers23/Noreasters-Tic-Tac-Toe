@@ -82,8 +82,11 @@ def get_next_move(turn_player):
     #loops through to make sure there is proper input
     while(True):
         move = input(turn_player + " enter an index 1-9 that corresponds to an open spot: ")
+         #checks if move is a valid input
+        if move not in {'1', '2', '3', '4', '5', '6', '7', '8', '9'}:
+            print("That is an invalid input. Try again with a number 1-9.")
         #if empty, the spot will be filled with the proper player token
-        if board[int(move)-1] == " ":
+        elif board[int(move)-1] == " ":
             if turn_player == first_turn_player:
                 board[int(move)-1] = first_turn_player_token
             else:
