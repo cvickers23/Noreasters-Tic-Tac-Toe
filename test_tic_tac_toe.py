@@ -28,5 +28,36 @@ class Test_TestTicTacToe(unittest.TestCase):
         #there is a lot of leway in case the players are not chosen exactly 50% of the time due to the nature of random chance
         self.assertTrue(( 4000 <= total_player_1_first <= 6000) and (4000 <= total_player_2_first <= 6000))
 
+    def test_win_check(self):
+        boards = []
+        
+        # / diagonal win
+        boards.append(["X", "O", "X", " ", "X", "O", "X", " ", "O"])
+        # \ diagonal win
+        boards.append(["O", "X", " ", "X", "O", " ", "O", "X", "O"])
+        # top row win
+        boards.append(["X", "X", "X", "O", "O", "X", "X", "O", "O"])
+        # middle row win
+        boards.append([" ", " ", "X", "O", "O", "O", " ", "X", "O"])
+        # bottom row win
+        boards.append(["X", " ", "O", " ", "X", "X", "O", "O", "O"])
+        # left column win
+        boards.append(["X", " ", "O", "X", "O", " ", "X", "O", "X"])
+        # middle column win
+        boards.append(["X", "O", "X", "O", "O", "X", " ", "O", " "])
+        # right column win
+        boards.append(["O", " ", "X", " ", "O", "X", "X", "O", "X"])
+
+        main.first_turn_player = "p1"
+        main.second_turn_player = "p2"
+        main.first_turn_player_token = "X"
+        main.second_turn_player_token = "O"
+
+        for b in boards:
+            main.game_over = False
+            main.board = b
+            main.determine_game_over()
+            self.assertTrue(main.game_over)
+
 if __name__ == "__main__":
     unittest.main()
