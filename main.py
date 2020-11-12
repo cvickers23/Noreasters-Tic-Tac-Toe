@@ -30,7 +30,6 @@ def play_game(p1, p2):
     #load global variables
     global first_turn_player
     global second_turn_player
-    global game_over
     first_turn_player, second_turn_player = choose_turn_order(p1, p2)
     choose_token()
     cur_player = first_turn_player
@@ -40,6 +39,7 @@ def play_game(p1, p2):
             cur_player = second_turn_player
         else:
             cur_player = first_turn_player
+    ask_play_again()
 
 
 #Function to allow players to input their names through the command line
@@ -76,9 +76,6 @@ def choose_turn_order(p1, p2):
 def get_next_move(turn_player):
     #load global variables
     global board
-    global first_turn_player
-    global first_turn_player_token
-    global second_turn_player_token
     #loops through to make sure there is proper input
     while(True):
         move = input(turn_player + " enter an index 1-9 that corresponds to an open spot: ")
@@ -111,11 +108,7 @@ def play_turn(turn_player):
 #   first_turn_player: A String variable of the name of the player going first
 #   second_turn_player: A string variable of the name of the player going second
 def determine_game_over():
-    global board
     global game_over
-    #Intialize boolean variables
-    is_winner_found = False
-    game_has_ended = False
     #Indices 0-2 are for first row, 3-5 are for second row, 6-8 are for third row
     win_state_indices = [
         #row win state indicies
@@ -141,31 +134,31 @@ def determine_game_over():
                 print("CONGRATULATIONS " + first_turn_player + " YOU WIN!!!\n")
             elif second_turn_player_token == winner_token:
                 print("CONGRATULATIONS " + second_turn_player + " YOU WIN!!!\n")
-            is_winner_found = True
-            game_has_ended = True
+            game_over = True
             break
     #Check if there's a tie
-    if not is_winner_found:
+    if not game_over:
         #Ensure that every space in the board has been filled
         if all([token != " " for token in board]):
             print("THE GAME HAS ENDED, IT IS A TIE.")
-            game_has_ended = True
+            game_over = True        
 
-    #End the game
-    while game_has_ended:
-        #Determine if the player would like to play again
+
+#Function to determine if the players want to play again
+def ask_play_again():
+    global board
+    while True:
+        #Determine if the players would like to play again
         play_again_choice = input("Would you like to play again (yes/no)?: ")
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
             board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
             play_game(first_turn_player, second_turn_player)
-            game_has_ended = False
+            break
         elif play_again_choice in ["No", "no", "NO", "nO", "n", "N"]:
             print("\nThanks for playing!")
-            game_over = True
             break
         else:
             print("\nThat was not a valid input, please try again.\n")
-
 
 
 #Function to let the first turn player choose their game token, and assigns other token to other player
