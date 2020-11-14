@@ -31,7 +31,7 @@ def play_game(p1, p2):
     global first_turn_player
     global second_turn_player
     first_turn_player, second_turn_player = choose_turn_order(p1, p2)
-    choose_token()
+    choose_token(input_token())
     cur_player = first_turn_player
     while game_over == False:
         play_turn(cur_player)
@@ -147,11 +147,13 @@ def determine_game_over():
 #Function to determine if the players want to play again
 def ask_play_again():
     global board
+    global game_over
     while True:
         #Determine if the players would like to play again
         play_again_choice = input("Would you like to play again (yes/no)?: ")
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
             board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+            game_over = False
             play_game(first_turn_player, second_turn_player)
             break
         elif play_again_choice in ["No", "no", "NO", "nO", "n", "N"]:
@@ -160,18 +162,22 @@ def ask_play_again():
         else:
             print("\nThat was not a valid input, please try again.\n")
 
+#Function to get user input of token to make testing easier
+#returns: the user input of token.
+def input_token():
+    return input(first_turn_player + ", enter your choice of token (X/x or O/o): ")
+
 
 #Function to let the first turn player choose their game token, and assigns other token to other player
 #Args:
 #   first_turn_player: A string containing the name of the player going first
 #   second_turn_player: A string containing the name of the player going second
-def choose_token():
+#   token: String of token that user inputted
+def choose_token(token):
     #load global variables
     global first_turn_player_token
     global second_turn_player_token
     while(True):
-        token = input(first_turn_player + ", enter your choice of token (X/x or O/o): ")
-
         if (token == "X" or token == "x"): # First turn player entered X/x
             first_turn_player_token, second_turn_player_token = "X", "O" # First turn player gets X, second gets O
             break # Tokens assigned, end loop
@@ -182,6 +188,7 @@ def choose_token():
 
         else: # First turn player entered invalid input
             print("Please enter either X/x or O/o.")
+            token = input_token()
 
     # Display assigned tokens
     print(first_turn_player + " is " + first_turn_player_token + ", " +

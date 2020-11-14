@@ -3,12 +3,15 @@ import main
 import unittest
 
 class Test_TestTicTacToe(unittest.TestCase):
-    # @mock.patch('unittest.input', create=True)
-    # def test_Symbol_Selection(self, mocked_input):
-    #     mocked_input.side_effect = ["X","x","O","o"]
-    #     main.first_turn_player_token = ""
-    #     main.second_turn_player_token = ""
-    #     self.assertEqual(main.choose_token(),main.first_turn_player_token)
+
+    def test_symbol_selection(self):
+        mocked_input = ["X","x","O","o"]
+        main.first_turn_player = "p1"
+        main.second_turn_player = "p2"
+        for symbol in mocked_input:
+            main.first_turn_player_token = ""
+            main.choose_token(symbol)
+            self.assertEqual(symbol.upper(),main.first_turn_player_token)
 
     def test_random_players(self):
         total_player_1_first = 0
