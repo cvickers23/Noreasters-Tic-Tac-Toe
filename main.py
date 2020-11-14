@@ -9,7 +9,7 @@ import random
 def print_rules():
     print("""Rules of the game:
 1. The game is played on a 3x3 square grid.
-2. One player’s token is X and the other player’s token is O.
+2. One player's token is X and the other player's token is O.
 3. Players take turns putting their token in empty squares in the grid.
 4. The first player to get 3 of their tokens in a row (up, down, across, or diagonally) is the winner.
 5. When all 9 squares of the grid are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
