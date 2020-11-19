@@ -63,12 +63,12 @@ def enter_names():
     p1 = input("Enter name of player 1: ")
     p2 = input("Enter name of player 2: ")
     while(True):
-        if (p1 == p2):
-            p2 = input("Players cannot have the same name. Please enter name of player 2: ")
-        elif (p1 == ""):
+        if (p1 == ""):
             p1 = input("Players cannot have empty names. Please enter name of player 1: ")
         elif (p2 == ""):
             p2 = input("Players cannot have empty names. Please enter name of player 2: ")
+        elif (p1 == p2):
+            p2 = input("Players cannot have the same name. Please enter name of player 2: ")
         else:
             break
     return(p1, p2)
