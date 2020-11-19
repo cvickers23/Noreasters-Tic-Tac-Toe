@@ -4,6 +4,19 @@
 #10/30/2020
 #A command line interface tool for playing tic tac toe
 import random
+import logging
+import logging.handlers
+import os
+from datetime import datetime
+
+def add_logging():
+    log = logging.getLogger("script-logger")
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "game_log.log"))
+    formatter = logging.Formatter(logging.BASIC_FORMAT)
+    handler.setFormatter(formatter)
+    log.addHandler(handler)
+    log.info(datetime.time)
 
 #Function to print the rules of Tic Tac Toe
 def print_rules():
@@ -207,6 +220,7 @@ def display_board():
 #Function to run the whole program
 def main():
     #initialize global variables
+    add_logging()
     global first_turn_player, first_turn_player_token, second_turn_player, second_turn_player_token, game_over, board
     first_turn_player = ""
     first_turn_player_token = ""
