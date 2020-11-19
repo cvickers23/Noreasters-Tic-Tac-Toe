@@ -9,14 +9,13 @@ import logging.handlers
 import os
 from datetime import datetime
 
-def add_logging():
-    log = logging.getLogger("script-logger")
-    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
-    handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "game_log.log"))
-    formatter = logging.Formatter(logging.BASIC_FORMAT)
-    handler.setFormatter(formatter)
-    log.addHandler(handler)
-    log.info(datetime.time)
+log = logging.getLogger("script-logger")
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "game_log.log"))
+formatter = logging.Formatter(logging.BASIC_FORMAT)
+handler.setFormatter(formatter)
+log.addHandler(handler)
+log.info(datetime.time)
 
 #Function to print the rules of Tic Tac Toe
 def print_rules():
@@ -28,11 +27,11 @@ def print_rules():
 5. When all 9 squares of the grid are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
 
 Example Game Board (with Indices):
- 1 | 2 | 3
+1 | 2 | 3
 -----------
- 4 | 5 | 6
+4 | 5 | 6
 -----------
- 7 | 8 | 9 """)
+7 | 8 | 9 """)
 
 
 #Function to play a single game of tic tac toe
@@ -99,8 +98,10 @@ def get_next_move(turn_player):
         elif board[int(move)-1] == " ":
             if turn_player == first_turn_player:
                 board[int(move)-1] = first_turn_player_token
+                log.info(first_turn_player + " placed an " + first_turn_player_token + " in spot " + move)
             else:
                 board[int(move)-1] = second_turn_player_token
+                log.info(second_turn_player + " placed an " + second_turn_player_token + " in spot " + move)
             break
         #board spot is full
         else:
@@ -220,7 +221,6 @@ def display_board():
 #Function to run the whole program
 def main():
     #initialize global variables
-    add_logging()
     global first_turn_player, first_turn_player_token, second_turn_player, second_turn_player_token, game_over, board
     first_turn_player = ""
     first_turn_player_token = ""
