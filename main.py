@@ -122,6 +122,7 @@ def get_next_move(turn_player):
 #Args:
 #   turn_player: A string that contains the name of the player whose has the current turn
 def play_turn(turn_player):
+    log.info(f'{turn_player} is the turn player')
     get_next_move(turn_player)
     display_board()
     determine_game_over()
@@ -156,8 +157,10 @@ def determine_game_over():
             #Determine/print the name of the winning player
             if first_turn_player_token == winner_token:
                 print("CONGRATULATIONS " + first_turn_player + " YOU WIN!!!\n")
+                log.info(f'Game has ended. {first_turn_player} won')
             elif second_turn_player_token == winner_token:
                 print("CONGRATULATIONS " + second_turn_player + " YOU WIN!!!\n")
+                log.info(f'Game has ended. {second_turn_player} won')
             game_over = True
             break
     #Check if there's a tie
@@ -165,7 +168,10 @@ def determine_game_over():
         #Ensure that every space in the board has been filled
         if all([token != " " for token in board]):
             print("THE GAME HAS ENDED, IT IS A TIE.")
-            game_over = True        
+            log.info('Game has ended in a tie')
+            game_over = True      
+        if not game_over:
+            log.info('Game is still in progress')
 
 
 #Function to determine if the players want to play again
@@ -178,6 +184,7 @@ def ask_play_again():
         if play_again_choice in ["YES", "Yes", "YeS", "YEs", "yES", "yEs", "yeS", "yes", "y", "Y"]:
             board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
             game_over = False
+            log.info('Players have chosen to play again.')
             play_game(first_turn_player, second_turn_player)
             break
         elif play_again_choice in ["No", "no", "NO", "nO", "n", "N"]:
