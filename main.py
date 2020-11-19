@@ -7,16 +7,18 @@ import random
 import logging
 import logging.handlers
 import os
-from datetime import datetime
+
 
 def add_logging():
+    #create a logging object
     log = logging.getLogger("script-logger")
-    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    #config the log to level of info and so that a timestamp is printed before each log
+    logging.basicConfig( format='%(asctime)s %(message)s', level=os.environ.get("LOGLEVEL", "INFO"), datefmt = '%Y:%m:%d:%H:%M:%S')
+    #config logs to be sent to a file
     handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "game_log.log"))
     formatter = logging.Formatter(logging.BASIC_FORMAT)
     handler.setFormatter(formatter)
     log.addHandler(handler)
-    log.info(datetime.time)
 
 #Function to print the rules of Tic Tac Toe
 def print_rules():
