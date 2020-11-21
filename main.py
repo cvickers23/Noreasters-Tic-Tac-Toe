@@ -10,11 +10,10 @@ import os
 
 #create a logging object
 log = logging.getLogger("script-logger")
-#config the log to level of info and so that a timestamp is printed before each log
-logging.basicConfig( format='%(asctime)s %(message)s', level=os.environ.get("LOGLEVEL", "INFO"), datefmt = '%Y:%m:%d:%H:%M:%S')
-#config logs to be sent to a file
+#config log level to be set to info
+log.setLevel(logging.INFO)
 handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "game_log.log"))
-formatter = logging.Formatter("%(asctime)s;%(levelname)s;%(message)s","%Y-%m-%d %H:%M:%S")
+formatter = logging.Formatter("%(asctime)s;%(levelname)s;%(message)s","%Y:%m:%d:%H:%M:%S")
 handler.setFormatter(formatter)
 log.addHandler(handler)
 
