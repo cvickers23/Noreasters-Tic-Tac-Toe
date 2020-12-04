@@ -10,10 +10,10 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
    * There is only one branch, "main" so no need to worry about being on the correct branch
 2. In the pop-up window, click on "Download ZIP"
 3. Locate the downloaded file on your computer (it most likely will automaitcally be saved to your Downloads folder)
-  * It should be called Noreasters-Tic-Tac-Toe-main
+   * It should be called Noreasters-Tic-Tac-Toe-main
 4. Extract the zip file
-  * On a Windows Machine: Right click the file and select "Extract all" to extract it
-  * On a Mac Machine: Double click on the file to extract it
+   * On a Windows Machine: Right click the file and select "Extract all" to extract it
+   * On a Mac Machine: Double click on the file to extract it
 5. 
 
 ## How to run the game
