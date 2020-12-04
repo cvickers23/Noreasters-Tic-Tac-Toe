@@ -24,4 +24,4 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
 3. You will be prompted for input when it is your turn to enter information
 4. Follow instructions and input info as needed during gameplay
 5. Upon conclusion you can either play the game again or quit
-6. See the wiki for more detailed information
+6. Please see the wiki for more detailed information about how to play the game
