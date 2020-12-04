@@ -63,4 +63,6 @@ class Test_TestTicTacToe(unittest.TestCase):
             self.assertTrue(main.game_over)
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(exit=False)
+    print("\nPress any key to quit")
+    input()
