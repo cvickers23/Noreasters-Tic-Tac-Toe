@@ -15,7 +15,7 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
    * On a Windows Machine: Right click the file and select "Extract all" to extract it
    * On a Mac Machine: Double click on the file to extract it
 
-## How to run the game
+## How to run/play the game
 1. Double click on the file within the extracted project folder "main.py"
    * On a Mac machine there will be a couple extra steps:
      * A program called IDLE will open up that allows you to run Python files easily
@@ -24,3 +24,4 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
 3. You will be prompted for input when it is your turn to enter information
 4. Follow instructions and input info as needed during gameplay
 5. Upon conclusion you can either play the game again or quit
+6. See the wiki for more detailed information
