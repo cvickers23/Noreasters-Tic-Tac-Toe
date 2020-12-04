@@ -14,7 +14,6 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
 4. Extract the zip file
    * On a Windows Machine: Right click the file and select "Extract all" to extract it
    * On a Mac Machine: Double click on the file to extract it
-5. 
 
 ## How to run the game
 1. Double click on the file within the extracted project folder "main.py"
