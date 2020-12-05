@@ -16,10 +16,8 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
    * On a Mac Machine: Double click on the file to extract it
 
 ## How to run/play the game
-1. Double click on the file within the extracted project folder "main.py"
-   * On a Mac machine there will be a couple extra steps:
-     * A program called IDLE will open up that allows you to run Python files easily
-     * Click f5 on your keyboard (or fn + f5 on a laptop) to run the file
+1. * Windows: Double click on the file within the extracted project folder "main.py"
+   * Mac: Right click on the extracted project folder. Click "New Terminal at Folder". Type following command in the terminal window, "Python main.py", and then hit enter.
 2. The game will display the rules for you to read
 3. You will be prompted for input when it is your turn to enter information
 4. Follow instructions and input info as needed during gameplay
