@@ -33,3 +33,6 @@ Repository for Team Nor'easter's Tic Tac Toe program for COM 306 SE
    * Whether wins are determined correctly in the game
 3. The output of the tests is printed at the bottom of the program. If all tests have passed, it will print "OK".
    * Please ignore the other data that is printed automatically before the test results are printed at the bottom. This other data is the result of output automatically printed when testing functions.
+   
+## How to find the logs to get information on what happened during a game
+Inside of the folder downloaded from the game's GitHub repository, there is a file called "game_log.log". As a game is played, information on what happened during the game is logged in this file. This includes details regarding turns played and game status.
